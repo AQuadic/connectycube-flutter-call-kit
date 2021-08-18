@@ -146,7 +146,7 @@ fun addCallRejectAction(
     callInitiatorId: Int,
     callInitiatorName: String,
     opponents: ArrayList<Int>,
-    userInfo: String
+    userInfo: String,
     rejectTxt: String
 ) {
     val bundle = Bundle()
@@ -187,7 +187,7 @@ fun addCallAcceptAction(
     callInitiatorId: Int,
     callInitiatorName: String,
     opponents: ArrayList<Int>,
-    userInfo: String
+    userInfo: String,
     acceptTxt: String
 ) {
     val bundle = Bundle()

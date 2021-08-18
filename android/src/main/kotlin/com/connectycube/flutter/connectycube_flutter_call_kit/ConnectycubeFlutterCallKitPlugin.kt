@@ -77,8 +77,8 @@ class ConnectycubeFlutterCallKitPlugin : FlutterPlugin, MethodCallHandler,
                         callInitiatorId,
                         callInitiatorName,
                         callOpponents,
-                        userInfo
-                        acceptTxt
+                        userInfo,
+                        acceptTxt,
                         rejectTxt
                     )
 
