@@ -72,6 +72,8 @@ class ConnectycubeFlutterCallKit {
     required int? callerId,
     required String? callerName,
     required Set<int>? opponentsIds,
+    String? acceptTxt,
+    String? rejectTxt,
     Map<String, String>? userInfo,
   }) async {
     if (!Platform.isAndroid) return;
@@ -81,6 +83,8 @@ class ConnectycubeFlutterCallKit {
       'call_type': callType,
       'caller_id': callerId,
       'caller_name': callerName,
+      'accept': acceptTxt ?? 'Accept',
+      'reject': rejectTxt ?? 'Reject',
       'call_opponents': opponentsIds!.join(','),
       'user_info': userInfo != null ? jsonEncode(userInfo) : jsonEncode(Map()),
     });

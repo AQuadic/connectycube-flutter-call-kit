@@ -67,6 +67,8 @@ class ConnectycubeFlutterCallKitPlugin : FlutterPlugin, MethodCallHandler,
                         .split(',')
                         .map { it.toInt() })
                     val userInfo = arguments["user_info"] as String
+                    val acceptTxt = arguments["accept"] as String
+                    val rejectTxt = arguments["reject"] as String
 
                     showCallNotification(
                         applicationContext!!,
@@ -76,6 +78,8 @@ class ConnectycubeFlutterCallKitPlugin : FlutterPlugin, MethodCallHandler,
                         callInitiatorName,
                         callOpponents,
                         userInfo
+                        acceptTxt
+                        rejectTxt
                     )
 
                     saveCallState(callId, CALL_STATE_PENDING)

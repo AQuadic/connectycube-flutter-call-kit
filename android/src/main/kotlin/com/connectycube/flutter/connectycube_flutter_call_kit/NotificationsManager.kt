@@ -27,7 +27,7 @@ fun cancelCallNotification(context: Context, callId: String) {
 
 fun showCallNotification(
     context: Context, callId: String, callType: Int, callInitiatorId: Int,
-    callInitiatorName: String, callOpponents: ArrayList<Int>, userInfo: String
+    callInitiatorName: String, callOpponents: ArrayList<Int>, userInfo: String, acceptTxt: String, rejectTxt: String
 ) {
     val notificationManager = NotificationManagerCompat.from(context)
 
@@ -60,7 +60,8 @@ fun showCallNotification(
         callInitiatorId,
         callInitiatorName,
         callOpponents,
-        userInfo
+        userInfo,
+        rejectTxt
     )
     addCallAcceptAction(
         context,
@@ -70,7 +71,8 @@ fun showCallNotification(
         callInitiatorId,
         callInitiatorName,
         callOpponents,
-        userInfo
+        userInfo,
+        acceptTxt
     )
 
     // Add full screen intent (to show on lock screen)
@@ -145,6 +147,7 @@ fun addCallRejectAction(
     callInitiatorName: String,
     opponents: ArrayList<Int>,
     userInfo: String
+    rejectTxt: String
 ) {
     val bundle = Bundle()
     bundle.putString(EXTRA_CALL_ID, callId)
@@ -168,7 +171,7 @@ fun addCallRejectAction(
             "drawable",
             context.packageName
         ),
-        getColorizedText("Reject", "#E02B00"),
+        getColorizedText(rejectTxt, "#E02B00"),
         declinePendingIntent
     )
         .build()
@@ -185,6 +188,7 @@ fun addCallAcceptAction(
     callInitiatorName: String,
     opponents: ArrayList<Int>,
     userInfo: String
+    acceptTxt: String
 ) {
     val bundle = Bundle()
     bundle.putString(EXTRA_CALL_ID, callId)
@@ -204,7 +208,7 @@ fun addCallAcceptAction(
     )
     val acceptAction: NotificationCompat.Action = NotificationCompat.Action.Builder(
         context.resources.getIdentifier("ic_menu_call", "drawable", context.packageName),
-        getColorizedText("Accept", "#4CB050"),
+        getColorizedText(acceptTxt, "#4CB050"),
         acceptPendingIntent
     )
         .build()
